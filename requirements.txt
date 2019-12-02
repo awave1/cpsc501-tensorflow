@@ -1,0 +1,6 @@
+jupyter
+numpy
+matplotlib
+Pillow
+pyscreenshot
+tensorflow
