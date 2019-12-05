@@ -212,3 +212,8 @@ fabric.properties
 .idea/**/markdown-navigator/
 
 image.png
+*.aux
+*fdb_latexmk
+*fls
+*log
+*synctex.gz
