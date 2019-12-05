@@ -55,6 +55,11 @@ class NotMNISTModel:
 
 
 def main():
+    # Set the working directory to p2
+    abs_dir_path = os.path.abspath(__file__)
+    dir_name = os.path.dirname(abs_dir_path)
+    os.chdir(dir_name)
+
     model = NotMNISTModel()
     model.train().save(f'{os.getcwd()}/notMNIST.h5')
 
