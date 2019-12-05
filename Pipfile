@@ -9,6 +9,7 @@ python_version = '3.7'
 [scripts]
 p1 = 'python ./p1/MNISTStarter.py'
 p2 = 'python ./p2/notMNISTStarter.py'
+p3 = 'python ./p3/CHDModel.py'
 predict = 'python ./predict.py'
 'predict:test' = 'python ./predict_test.py'
 grabimage = 'python ./grabimage.py'
@@ -22,6 +23,7 @@ Pillow = "*"
 pyscreenshot = "*"
 jupyter = "*"
 pylint = "*"
+pandas = "*"
 
 [dev-packages]
 autopep8 = "*"
