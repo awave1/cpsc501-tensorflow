@@ -1,5 +1,6 @@
 from numpy.random import RandomState
 import tensorflow as tf
+from tensorflow.keras import regularizers
 import numpy as np
 import pandas
 import os
@@ -61,7 +62,7 @@ class CHDModel:
 
         dataset = tf.data.experimental.make_csv_dataset(
             file,
-            batch_size=50,
+            batch_size=5,
             label_name='chd',
             na_value='?',
             num_epochs=1,
@@ -126,8 +127,8 @@ class CHDModel:
 
         model.fit(train_data, epochs=20)
         test_loss, test_accuracy = model.evaluate(test_data)
-        print(f"Model Loss:    {test_loss:.2f}")
         print(f"Model Accuracy: {test_accuracy*100:.1f}%")
+        print(f"Model Loss:    {test_loss:.2f}")
 
         predictions = model.predict(test_data)
 
