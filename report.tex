@@ -31,17 +31,20 @@ To optimize the given MNIST model, I performed the following:
   \item Number of epochs increased from 1 to 10
 \end{itemize}
 
+Resulting model is 99\% accurate on the training data and 98\% accurate on the test data.
 % https://www.tensorflow.org/tutorials/quickstart/beginner
 
 \section*{Part 2}
 
 \subsection*{Part 2.1}
 
-Initial model for Part 2 was using the same layers as the model for Part 1, which can be seen here \gh{14cec7c3}. The accuracy with that model was roughly 93\%.
+Initial model for Part 2 was using the same layers as the model for Part 1, which can be seen here \gh{14cec7c3}. The accuracy with that model was roughly 93\%. However, the model failed to identify image \texttt{user_inputs/image_A_lower.png}.
 
 \subsection*{Part 2.2}
 
-To improve the model, I implemented a Convolution Neural Network, which increased the accuracy of notMNIST model to roughly 95\%.
+To improve the model, I implemented a Convolution Neural Network, which increased the accuracy of notMNIST model to roughly 95\%. This model was able to identify the image \texttt{user_inputs/image_A_lower.png}.
+
+Besides the convolution network, adding more neurons via extra Dense layers and Dropout layers that prevent overfitting increased the predictions.
 
 \section*{Part 3}
 
