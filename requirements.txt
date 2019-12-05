@@ -5,3 +5,4 @@ Pillow
 pyscreenshot
 tensorflow
 pylint
+pandas
