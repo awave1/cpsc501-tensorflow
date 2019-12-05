@@ -24,7 +24,7 @@ def main():
 
 
 def predict(model, class_names, img, true_label):
-    img = np.array([img])
+    img = np.array([img]).astype(np.float32)
     # Get the prediction array
     prediction = model.predict(img)[0]
     # Determine what the predicted label is
