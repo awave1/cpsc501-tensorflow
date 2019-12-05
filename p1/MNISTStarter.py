@@ -1,4 +1,5 @@
 import tensorflow as tf
+import os
 
 
 def train():
@@ -31,6 +32,11 @@ def train():
 
 
 def main():
+    # Set the working directory to p1
+    abs_dir_path = os.path.abspath(__file__)
+    dir_name = os.path.dirname(abs_dir_path)
+    os.chdir(dir_name)
+
     model = train()
     model.save('./MNIST.h5')
 
