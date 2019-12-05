@@ -34,6 +34,10 @@ class NotMNISTModel:
         self.model.add(Flatten())
         self.model.add(Dense(2048, activation='relu'))
         self.model.add(Dropout(0.1))
+        self.model.add(Dense(1024, activation='relu'))
+        self.model.add(Dropout(0.2))
+        self.model.add(Dense(512, activation='relu'))
+        self.model.add(Dropout(0.2))
         self.model.add(Dense(num_classes, activation='softmax'))
 
         self.model.compile(optimizer='adam',
