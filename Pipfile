@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[requires]
+python_version = '3.7'
+
+[scripts]
+p1 = 'python ./p1/MNISTStarter.py'
+p2 = 'python ./p2/notMNISTStarter.py'
+
+[packages]
+tensorflow = "*"
+numpy = "*"
+matplotlib = "*"
+Pillow = "*"
+pyscreenshot = "*"
+jupyter = "*"
+pylint = "*"
+
+[dev-packages]
+autopep8 = "*"
