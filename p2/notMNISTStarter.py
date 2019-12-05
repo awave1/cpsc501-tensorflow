@@ -1,4 +1,5 @@
 import tensorflow as tf
+from tensorflow import keras
 import numpy as np
 import os
 
@@ -14,12 +15,15 @@ def train():
     x_train, x_test = x_train / 255.0, x_test / 255.0
 
     model = tf.keras.models.Sequential([
+        tf.keras.layers.Conv1D(32, 5, activation='relu', kernel_regularizer=tf.keras.regularizers.l2(
+            0.005), input_shape=(28, 28)),
+        tf.keras.layers.MaxPool1D(3),
         tf.keras.layers.Flatten(input_shape=(28, 28)),
-        tf.keras.layers.Dense(128, activation='relu'),
+        tf.keras.layers.Dense(2048, activation='relu'),
         tf.keras.layers.Dropout(0.2),
         tf.keras.layers.Dense(10, activation='softmax')
     ])
-    model.compile(optimizer='adamax',
+    model.compile(optimizer='adam',
                   loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
     print("--Fit model--")
