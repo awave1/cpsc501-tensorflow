@@ -20,7 +20,7 @@ def main():
 
 
 def predict(model, class_names, img, true_label):
-    img = np.array([img])
+    img = np.array([img]).astype(np.float32)
     # Get the prediction array
     prediction = model.predict(img)[0]
     # Determine what the predicted label is
@@ -33,12 +33,14 @@ def check_args():
     if(len(sys.argv) == 1):
         print("No arguments so using defaults")
         prompt = input("y/Y for MNIST, otherwise notMNIST:")
+        image = input('path to image: ')
+        predict_class = input('predict class of image.png (index): ')
         if prompt.lower() == 'y':
             sys.argv = ["predict.py", "MNIST",
-                        "./p1/MNIST.h5", "image.png", input('predict class of image.png (index)')]
+                        "./p1/MNIST.h5", image, predict_class]
         else:
             sys.argv = ["predict.py", "notMNIST",
-                        "./p2/notMNIST.h5", "image.png", input('predict class of image.png (index)')]
+                        "./p2/notMNIST.h5", image, predict_class]
     if(len(sys.argv) != 5):
         print("Usage python predict.py <MNIST,notMNIST> <model.h5> <image.png> <prediction class index>")
         sys.exit(1)
