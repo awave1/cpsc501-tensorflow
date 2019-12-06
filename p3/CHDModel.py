@@ -1,6 +1,6 @@
 from numpy.random import RandomState
 import tensorflow as tf
-from tensorflow.keras import regularizers
+from tensorflow.keras.regularizers import l2
 import numpy as np
 import pandas
 import os
@@ -62,7 +62,7 @@ class CHDModel:
 
         dataset = tf.data.experimental.make_csv_dataset(
             file,
-            batch_size=5,
+            batch_size=10,
             label_name='chd',
             na_value='?',
             num_epochs=1,
@@ -112,8 +112,12 @@ class CHDModel:
 
         model = tf.keras.Sequential([
             preprocessing_layer,
-            tf.keras.layers.Dense(128, activation='relu'),
-            tf.keras.layers.Dense(128, activation='relu'),
+            tf.keras.layers.Dense(128, activation='relu',
+                                  kernel_regularizer=l2(0.01)),
+            tf.keras.layers.Dropout(0.5),
+            tf.keras.layers.Dense(128, activation='relu',
+                                  kernel_regularizer=l2(0.001)),
+            tf.keras.layers.Dropout(0.2),
             tf.keras.layers.Dense(1, activation='sigmoid'),
         ])
 
@@ -133,7 +137,8 @@ class CHDModel:
         predictions = model.predict(test_data)
 
         # Show some results
-        for prediction, has_chd in zip(predictions[:10], list(test_data)[0][1][:10]):
+        predictions_test_combined = zip(predictions[:10], list(test_data)[0][1][:10])
+        for prediction, has_chd in predictions_test_combined:
             print("CHD prediction percentage: {:.2%}".format(
                 prediction[0]), " | Actual outcome: ", ("CHD" if bool(has_chd) else "NO CHD"))
 
