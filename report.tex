@@ -6,6 +6,11 @@
   filecolor=blue,
   urlcolor=blue,
 ]{hyperref}
+\usepackage{graphicx}
+\usepackage[rightcaption]{sidecap}
+
+
+\graphicspath{ {./assets/} }
 
 \newcommand{\gh}[1]{%
   \href{https://github.com/awave1/cpsc501-tensorflow/commit/#1}{#1}%
@@ -32,7 +37,12 @@ To optimize the given MNIST model, I performed the following:
 \end{itemize}
 
 Resulting model is 99\% accurate on the training data and 98\% accurate on the test data.
-% https://www.tensorflow.org/tutorials/quickstart/beginner
+
+\subsubsection*{References}
+
+\begin{itemize}
+  \item \href{https://www.tensorflow.org/tutorials/quickstart/beginner}{https://www.tensorflow.org/tutorials/quickstart/beginner}
+\end{itemize}
 
 \section*{Part 2}
 
@@ -46,8 +56,38 @@ To improve the model, I implemented a Convolution Neural Network, which increase
 
 Besides the convolution network, adding more neurons via extra Dense layers and Dropout layers that prevent overfitting increased the predictions.
 
+\begin{figure}[t]
+  \caption{Initial test with the first model}
+  \includegraphics[width=0.6\textwidth]{user_input_a}
+  \centering
+  \caption{Test using the updated model}
+  \includegraphics[width=0.6\textwidth]{user_input_b}
+  \centering
+\end{figure}
+
 \section*{Part 3}
 
-Initial model had accuracy of roughly 70\%.
+Initially, the model was trained without taking in consideration overfitting. Resulted accuracy:
+
+\begin{figure}[h!]
+  \includegraphics[width=0.8\textwidth]{p32.png}
+  \centering
+\end{figure}
+
+After adding Dropouts and l2 regularizers, the model testing and training accuracy align and become roughly equal:
+
+\begin{figure}[h!]
+  \includegraphics[width=0.8\textwidth]{p31.png}
+  \centering
+\end{figure}
+
+\newpage
+
+\subsubsection*{References}
+
+\begin{itemize}
+  \item \href{https://www.tensorflow.org/tutorials/load\_data/csv}{https://www.tensorflow.org/tutorials/load\_data/csv}
+  \item \href{https://www.tensorflow.org/tutorials/keras/overfit\_and\_underfit}{https://www.tensorflow.org/tutorials/keras/overfit\_and\_underfit}
+\end{itemize}
 
 \end{document}

@@ -218,3 +218,5 @@ image.png
 *log
 *synctex.gz
 *.out
+
+.DS_Store
